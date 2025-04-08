@@ -1,33 +1,39 @@
-import os
 import logging
+import os
+
 from fastapi import FastAPI
+
 from src import settings
-# from src.api.pnl_router import router as pnl_router
-# from src.api.debug import router as debug_router
+from src.api.customer import router as customer_router
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 logger = logging.getLogger(__name__)
 
 # Initialize FastAPI
 app = FastAPI(
     title=settings.TITLE,
     description=settings.DESCRIPTION,
-    docs_url='/docs',
-    redoc_url='/redoc',
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
 
-@app.on_event('startup')
+@app.on_event("startup")
 async def startup():
     logger.info("startup: Starting the app")
 
 
 @app.get("/")
-def hello():
-    return {
-        "message": "Hello World!"
-    }
+async def test():
+    logger.info("debug: testing the app")
+    return "profile-manager-service is running"
 
 
-# app.include_router(pnl_router, prefix='/pnl')
-# app.include_router(debug_router, prefix='/debug')
+app.include_router(customer_router, prefix="/v1/customer")
 
 BASE_DIR = os.path.dirname(__file__)

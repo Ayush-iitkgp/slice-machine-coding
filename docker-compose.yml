@@ -17,13 +17,13 @@ services:
     ports:
       - ${APP_PORT}:${APP_PORT}
     volumes:
-      - ./src:/opt/profile-mananger-service/src
-      - ./scripts:/opt/profile-mananger-service/scripts
-      - ./tests:/opt/profile-mananger-service/tests
+      - ./src:/opt/slice-machine-coding/src
+      - ./scripts:/opt/slice-machine-coding/scripts
+      - ./tests:/opt/slice-machine-coding/tests
     depends_on:
       - postgres
     env_file:
-      - .env.docker
+      - .env
 
   postgres:
     image: postgres:12.7
@@ -36,4 +36,4 @@ services:
     expose:
       - 5432
     ports:
-      - 5432:5432
+      - "5432:5432"

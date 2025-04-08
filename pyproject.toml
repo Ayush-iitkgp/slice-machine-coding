@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "profile-manager-service"
+name = "slice-machine-coding"
 version = "0.1.0"
-description = "A Python FastAPI Service for for password and language setup"
+description = "A Python FastAPI Service"
 authors = ["Ayush Pandey <ayush.pandey@tier.app>"]
 license = "MIT"
 readme = "README.md"
@@ -10,11 +10,24 @@ readme = "README.md"
 python = "3.10.8"
 fastapi = "^0.110.2"
 uvicorn = "^0.29.0"
-sqlalchemy = "^2.0.29"
+sqlalchemy = "1.4.20"
 asyncpg = "^0.29.0"
 psycopg2 = "^2.9.9"
 pydantic = "^2.7.0"
+alembic = "^1.13.1"
+bcrypt = "^4.1.2"
+python-jose = "^3.3.0"
+greenlet = "^3.1.1"
 
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+flake8 = "^7.0.0"
+black = "^24.4.0"
+isort = "^5.13.2"
+pytest = "^8.1.1"
+httpx = "^0.27.0"
+pytest-asyncio = "^0.24.0"
 
 [build-system]
 requires = ["poetry-core"]
